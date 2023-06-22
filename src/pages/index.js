@@ -12,10 +12,10 @@ export default function Home({ exchangesData }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-      <header className={styles.header}>Cryptocurrency exchanges</header>
-
-      <Table exchangesData={exchangesData} />
+      <div className={styles.body}>
+        <header className={styles.header}>Cryptocurrency exchanges</header>
+        <Table exchangesData={exchangesData} />
+      </div>
     </>
   );
 }

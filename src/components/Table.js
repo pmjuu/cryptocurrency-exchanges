@@ -1,8 +1,8 @@
-import styles from "@/styles/Home.module.css";
+import styles from "./Table.module.css";
 
 export default function Table({ exchangesData }) {
   return (
-    <>
+    <main>
       <div className={styles.table}>
         <div className={styles.tableHead}>
           <div className={styles.cell}>거래소</div>
@@ -20,9 +20,7 @@ export default function Table({ exchangesData }) {
             ({ id, name, trade_volume_24h_btc, image, url, country }) => (
               <div className={styles.tableRow} key={id}>
                 <div className={styles.cell}>
-                  <a href={url}>
-                    <img src={image} />
-                  </a>
+                  <img src={image} />
                   <span>{name}</span>
                 </div>
                 <div className={styles.cell}>{trade_volume_24h_btc}</div>
@@ -32,6 +30,6 @@ export default function Table({ exchangesData }) {
           )}
         </div>
       </div>
-    </>
+    </main>
   );
 }
