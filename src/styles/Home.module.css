@@ -10,8 +10,13 @@
   color: #fff;
 }
 
-.sortButton {
+.sortButtons {
+  display: inline;
   margin: 0 5px;
+}
+
+.sortButton {
+  margin: 0 1px;
   padding: 1px 3px;
   background-color: #fff;
   border: 1px solid #000;
@@ -31,16 +36,27 @@
   border: 1px solid #000;
 }
 
-.tableRow {
+.tableHead {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   background-color: #ededed;
   text-align: center;
   line-height: 2;
+  font-weight: 500;
 }
 
 .tableContents {
   background-color: #fff;
+}
+
+.tableRow {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border: 1px solid #eee;
+}
+
+.cell {
+  align-self: center;
 }
 
 /* Mobile */

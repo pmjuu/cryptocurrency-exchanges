@@ -1,8 +1,9 @@
 import Head from "next/head";
 import styles from "@/styles/Home.module.css";
 import Table from "@/components/Table";
+import axios from "axios";
 
-export default function Home() {
+export default function Home({ exchangesData }) {
   return (
     <>
       <Head>
@@ -14,7 +15,29 @@ export default function Home() {
 
       <header className={styles.header}>Cryptocurrency exchanges</header>
 
-      <Table />
+      <Table exchangesData={exchangesData} />
     </>
   );
+}
+
+export async function getStaticProps() {
+  async function getExchangesData() {
+    try {
+      const response = await axios.get(
+        "https://api.coingecko.com/api/v3/exchanges"
+      );
+
+      return response.data;
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  const exchangesData = await getExchangesData();
+
+  return {
+    props: {
+      exchangesData,
+    },
+  };
 }
