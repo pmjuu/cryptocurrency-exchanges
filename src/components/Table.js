@@ -1,8 +1,12 @@
 import styles from "./Table.module.css";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { sortAscending, sortDescending } from "@/features/dataSlice";
 
 export default function Table() {
-  const exchanges = useSelector((state) => state.data.exchanges);
+  const dispatch = useDispatch();
+  const { exchanges, isAscending, isDescending } = useSelector(
+    (state) => state.data
+  );
 
   return (
     <main>
@@ -12,8 +16,22 @@ export default function Table() {
           <div className={styles.cell}>
             거래량
             <div className={styles.sortButtons}>
-              <button className={styles.sortButton}>ACS</button>
-              <button className={styles.sortButton}>DESC</button>
+              <button
+                className={`${styles.sortButton} ${
+                  isAscending && styles.active
+                }`}
+                onClick={() => dispatch(sortAscending())}
+              >
+                ASC
+              </button>
+              <button
+                className={`${styles.sortButton} ${
+                  isDescending && styles.active
+                }`}
+                onClick={() => dispatch(sortDescending())}
+              >
+                DESC
+              </button>
             </div>
           </div>
           <div className={styles.cell}>국가</div>
