@@ -1,6 +1,9 @@
 import styles from "./Table.module.css";
+import { useSelector } from "react-redux";
 
-export default function Table({ exchangesData }) {
+export default function Table() {
+  const exchanges = useSelector((state) => state.data.exchanges);
+
   return (
     <main>
       <div className={styles.table}>
@@ -16,7 +19,7 @@ export default function Table({ exchangesData }) {
           <div className={styles.cell}>국가</div>
         </div>
         <div className={styles.tableContents}>
-          {exchangesData.map(
+          {exchanges.map(
             ({ id, name, trade_volume_24h_btc, image, url, country }) => (
               <div className={styles.tableRow} key={id}>
                 <div className={styles.cell}>
