@@ -1,0 +1,42 @@
+import styles from "./TradingPair.module.css";
+import axios from "axios";
+import { useEffect, useState } from "react";
+
+export default function TradingPair({ exchange, exchangeId }) {
+  const [tradingPairs, setTradingPairs] = useState([]);
+
+  useEffect(() => {
+    getTradingPair();
+  }, []);
+
+  async function getTradingPair() {
+    try {
+      const response = await axios.get(
+        `https://api.coingecko.com/api/v3/exchanges/${exchangeId}`
+      );
+      const pairs = response.data.tickers.map(
+        (ticker) => `${ticker.base}/${ticker.target}`
+      );
+      setTradingPairs(pairs);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  return (
+    <section>
+      <h1 className={styles.title}>
+        {exchange}
+        <br />
+        거래쌍 목록
+      </h1>
+      <ul className={styles.tradingPairs}>
+        {tradingPairs.map((pair, index) => (
+          <li className={styles.pair} key={`${pair}${index}`}>
+            {`${String(index + 1).padStart(2, "0")}. ${pair}`}
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+}

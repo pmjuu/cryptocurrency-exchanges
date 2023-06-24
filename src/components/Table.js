@@ -3,20 +3,30 @@ import { useSelector, useDispatch } from "react-redux";
 import { sortAscending, sortDescending } from "@/features/dataSlice";
 import { useState } from "react";
 import Modal from "./Modal";
+import TradingPair from "./TradingPair";
 
 export default function Table() {
   const dispatch = useDispatch();
   const { exchanges, isAscending, isDescending } = useSelector(
     (state) => state.data
   );
-
+  const [exchange, setExchange] = useState("");
+  const [exchangeId, setExchangeId] = useState("");
   const [isModalOpened, setIsModalOpened] = useState(false);
   const closeModal = () => setIsModalOpened(false);
-  const openModal = () => setIsModalOpened(true);
+  const handleRowClick = (name, id) => {
+    setIsModalOpened(true);
+    setExchange(name);
+    setExchangeId(id);
+  };
 
   return (
     <main>
-      {isModalOpened && <Modal closeModal={closeModal}>exchange info</Modal>}
+      {isModalOpened && (
+        <Modal closeModal={closeModal}>
+          <TradingPair exchange={exchange} exchangeId={exchangeId} />
+        </Modal>
+      )}
       <div className={styles.table}>
         <div className={styles.tableHead}>
           <div className={styles.cell}>거래소</div>
@@ -46,8 +56,12 @@ export default function Table() {
         <div className={styles.tableContents}>
           {exchanges.map(
             ({ id, name, trade_volume_24h_btc, image, country }) => (
-              <div className={styles.tableRow} key={id} onClick={openModal}>
-                <div className={styles.cell}>
+              <div
+                className={styles.tableRow}
+                key={id}
+                onClick={() => handleRowClick(name, id)}
+              >
+                <div className={`${styles.cell} ${styles.exchange}`}>
                   <img src={image} />
                   <span>{name}</span>
                 </div>
