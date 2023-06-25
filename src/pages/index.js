@@ -26,7 +26,7 @@ export const getStaticProps = wrapper.getStaticProps((store) => async () => {
   async function getExchangesData() {
     try {
       const response = await axios.get(
-        "https://api.coingecko.com/api/v3/exchanges?per_page=3&page=3"
+        "https://api.coingecko.com/api/v3/exchanges"
       );
 
       return response.data;

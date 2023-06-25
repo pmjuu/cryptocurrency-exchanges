@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 
 export default function TradingPair({ exchange, exchangeId }) {
   const [tradingPairs, setTradingPairs] = useState([]);
+  const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
     getTradingPair();
@@ -19,24 +20,24 @@ export default function TradingPair({ exchange, exchangeId }) {
       );
       setTradingPairs(pairs);
     } catch (error) {
-      console.error(error);
+      setErrorMessage(`Request Failed\n\n${error.response.data.error}`);
     }
   }
 
   return (
     <section>
-      <h1 className={styles.title}>
-        {exchange}
-        <br />
-        거래쌍 목록
-      </h1>
-      <ul className={styles.tradingPairs}>
-        {tradingPairs.map((pair, index) => (
-          <li className={styles.pair} key={`${pair}${index}`}>
-            {`${String(index + 1).padStart(2, "0")}. ${pair}`}
-          </li>
-        ))}
-      </ul>
+      <h1 className={styles.title}>{`${exchange}\n거래쌍 목록`}</h1>
+      {errorMessage ? (
+        <p className={styles.error}>{errorMessage}</p>
+      ) : (
+        <ul className={styles.tradingPairs}>
+          {tradingPairs.map((pair, index) => (
+            <li className={styles.pair} key={`${pair}${index}`}>
+              {`${String(index + 1).padStart(2, "0")}. ${pair}`}
+            </li>
+          ))}
+        </ul>
+      )}
     </section>
   );
 }
