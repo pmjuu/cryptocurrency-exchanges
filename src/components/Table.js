@@ -30,6 +30,7 @@ export default function Table() {
       )}
       <div className={styles.table}>
         <div className={styles.tableHead}>
+          <div className={styles.cell}>No.</div>
           <div className={styles.cell}>거래소</div>
           <div className={styles.cell}>
             거래량
@@ -57,12 +58,13 @@ export default function Table() {
         <div className={styles.tableContents}>
           {exchanges ? (
             exchanges.map(
-              ({ id, name, trade_volume_24h_btc, image, country }) => (
+              ({ id, name, trade_volume_24h_btc, image, country }, index) => (
                 <div
                   className={styles.tableRow}
                   key={id}
                   onClick={() => handleRowClick(name, id)}
                 >
+                  <div className={styles.cell}>{`${index + 1}`}</div>
                   <div className={`${styles.cell} ${styles.exchange}`}>
                     <img src={image} />
                     <span>{name}</span>

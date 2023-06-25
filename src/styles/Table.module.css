@@ -23,13 +23,13 @@
 }
 
 .table {
-  border: 1px solid #000;
   width: 740px;
+  border: 1px solid #000;
 }
 
 .tableHead {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 30px repeat(3, 1fr);
   position: sticky;
   top: 40px;
   background-color: #ddd;
@@ -39,12 +39,13 @@
 }
 
 .tableContents {
+  padding: 0 5px;
   background-color: #fff;
 }
 
 .tableRow {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 25px repeat(3, 1fr);
   height: 55px;
   border: 1px solid #eee;
   transition: all ease 0.3s;
@@ -53,6 +54,10 @@
 .tableRow:hover {
   background-color: #fafafa;
   cursor: pointer;
+}
+
+.index {
+  /* max-width: 10px; */
 }
 
 .cell {
