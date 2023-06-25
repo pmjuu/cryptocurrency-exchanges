@@ -31,7 +31,7 @@ export const getStaticProps = wrapper.getStaticProps((store) => async () => {
 
       return response.data;
     } catch (error) {
-      console.error(error);
+      return null;
     }
   }
 

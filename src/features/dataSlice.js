@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  exchanges: [],
+  exchanges: null,
   isAscending: false,
   isDescending: false,
 };
