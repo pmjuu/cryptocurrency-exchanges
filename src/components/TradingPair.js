@@ -1,4 +1,4 @@
-import styles from "./TradingPair.module.css";
+import styles from "../styles/TradingPair.module.css";
 import axios from "axios";
 import { useEffect, useState } from "react";
 

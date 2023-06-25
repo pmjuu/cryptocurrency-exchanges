@@ -30,6 +30,8 @@
 .tableHead {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  position: sticky;
+  top: 40px;
   background-color: #ddd;
   text-align: center;
   line-height: 2;

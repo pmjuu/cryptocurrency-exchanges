@@ -1,4 +1,4 @@
-import styles from "./Table.module.css";
+import styles from "../styles/Table.module.css";
 import { useSelector, useDispatch } from "react-redux";
 import { sortAscending, sortDescending } from "@/features/dataSlice";
 import { useState } from "react";

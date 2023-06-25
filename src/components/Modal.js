@@ -1,4 +1,4 @@
-import styles from "./Modal.module.css";
+import styles from "../styles/Modal.module.css";
 
 export default function Modal({ children, closeModal }) {
   const handleClosingClick = (e) => {
