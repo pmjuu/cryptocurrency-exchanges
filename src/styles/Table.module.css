@@ -39,13 +39,12 @@
 }
 
 .tableContents {
-  padding: 0 5px;
   background-color: #fff;
 }
 
 .tableRow {
   display: grid;
-  grid-template-columns: 25px repeat(3, 1fr);
+  grid-template-columns: 30px repeat(3, 1fr);
   height: 55px;
   border: 1px solid #eee;
   transition: all ease 0.3s;
@@ -56,8 +55,9 @@
   cursor: pointer;
 }
 
-.index {
-  /* max-width: 10px; */
+.indexCell {
+  margin: 0 5px;
+  text-align: center;
 }
 
 .cell {

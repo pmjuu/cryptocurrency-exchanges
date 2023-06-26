@@ -64,7 +64,9 @@ export default function Table() {
                   key={id}
                   onClick={() => handleRowClick(name, id)}
                 >
-                  <div className={styles.cell}>{`${index + 1}`}</div>
+                  <div className={`${styles.cell} ${styles.indexCell}`}>{`${
+                    index + 1
+                  }`}</div>
                   <div className={`${styles.cell} ${styles.exchange}`}>
                     <img src={image} />
                     <span>{name}</span>
