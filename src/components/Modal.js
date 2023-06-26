@@ -10,7 +10,11 @@ export default function Modal({ children, closeModal }) {
   };
 
   return (
-    <div className={styles.modalOuter} onClick={handleClosingClick}>
+    <div
+      className={styles.modalOuter}
+      onClick={handleClosingClick}
+      data-testid="modal-outer"
+    >
       <div className={styles.modalBox}>
         <div className={styles.contents}>{children}</div>
         <button className={styles.closeButton} onClick={closeModal}>
