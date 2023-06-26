@@ -19,7 +19,7 @@
 
 ## Next.js 적용하기
 
-이번 과제를 진행하면서 `Next.js`를 처음 사용하였습니다. 지금까지는 주로 Client Side Rendering 위주의 프로젝트만 진행해왔는데, 이번 과제를 통해서 렌더링, 특히 Server Side Rendering과 Static Site Generation에 대해 고민하게 되었습니다.
+이번 프로젝트를 진행하면서 `Next.js`를 처음 사용하였습니다. 지금까지는 주로 Client Side Rendering 위주로 작업해왔는데, 이번 프로젝트를 통해서 렌더링 방법, 특히 Server Side Rendering과 Static Site Generation에 대해 좀 더 알아보게 되었습니다.
 
 [노션 정리 자료](https://www.notion.so/Front-end-1c0fbc557aab4864bff6784a74055f76#96c4ac047a33443eb8938a773f66ce72)
 
@@ -35,16 +35,25 @@
 
 어떤 상황에서 무엇을 사용할지 고민하는 시간이 필요했습니다.
 
-### Static Generation vs Server-side Rendering 어떤 방법으로 데이터를 불러올까?
+<br>
 
-- Static Generation
+### Static Site Generation vs Server-side Rendering 어떤 방법으로 데이터를 불러올까?
+
+- Static Site Generation
   - 사용자 요청 전에 페이지를 pre-render 할 수 있을 때 사용하면 효율적입니다.
 - Server-side Rendering
   - 사용자 요청 전에 페이지를 pre-render 할 수 없거나, 자주 바뀌는 데이터를 페이지에서 보여줘야 하는 경우에 적합합니다.
 
+### Static Site Generation의 장점
+
+- 검색 엔진 최적화
+  - 검색 엔진 크롤러가 정적 HTML 콘텐츠를 쉽게 분석하고 인덱싱할 수 있습니다.
+- 서버 부하 감소
+  - SSG를 사용하면 서버는 빌드 프로세스 중에 정적 페이지를 생성하므로 런타임 중 서버 부하가 줄어듭니다.
+
 따라서, 거래소 목록 데이터를 불러올 때는 `getStaticProps()`를 사용했습니다.
 
-Pre-rendering을 통해 미리 HTML 페이지를 생성하여 성능을 향상시킬 수 있었습니다.
+Pre-rendering을 통해 미리 HTML 페이지를 생성하여 성능을 향상시킬 수 있었습니다. 이는 페이지 로딩 시간을 단축시키고 SEO 친화적인 사용자 경험을 제공합니다.
 
 <br>
 
@@ -77,7 +86,7 @@ axios란 브라우저와 node.js에서 사용할 수 있는 Promise 기반 HTTP 
 - 사이트에 점속하면 거래소 100개에 관한 정보가 나타납니다.
 - ASC/DESC 버튼으로 거래량 기준 오름차순/내림차순 정렬이 가능합니다.
 - 거래소 목록에서 row를 클릭하면 해당 거래소에서 지원하는 거래쌍의 목록이 모달창에서 보입니다.
-- X 버튼이나 모달 바깥쪽을 클릭하면 모달창은 사라집니다.
+- 모달창의 X 버튼이나 모달 바깥쪽을 클릭하면 모달창은 사라집니다.
 
 <br>
 
